@@ -1,0 +1,32 @@
+{% extends 'courses/base.html' %}
+
+
+{% block content %}
+    
+<div class="container">
+
+    {% for object in object_list %}
+    <div class="card" style="width:18rem;">
+            <div class="card-body">
+                <div class="card-header">{{object.membership_type}}</div>
+                <p class="card-text">
+                    <strong>Price : </strong>{{object.price}}<small>/month</small>
+                </p>
+                <h4>Included Courses</h4>    
+                <ul class="list-group list-group-flush">
+                    
+                    {% for course in object.course_set.all %}
+                        <li class="list-group-item">{{course.title}}</li>
+                    {% endfor %}
+                        
+                </ul>
+            </div>
+    </div>
+    {% endfor %}
+
+</div><!-- main container end-->
+
+
+
+{% endblock content %}
+    
