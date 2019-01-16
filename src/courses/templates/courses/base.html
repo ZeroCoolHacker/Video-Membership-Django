@@ -25,10 +25,10 @@
             {% endblock post_detail_link %}
                 
             {% if not request.user.is_authenticated %}
-                <li class="float-right">
+                <li class="breadcrumb-item">
                     <a href="/register">Register</a>
                 </li>
-                <li class="float-right">
+                <li class="breadcrumb-item">
                     <a href="/login">Login</a>
                 </li>
                 {% else %}
