@@ -7,6 +7,13 @@
     <title>Video Store</title>
 </head>
 <body>
-    {{ object }}
+    <h1>Lesson Detail</h1>
+    
+    {% if object is not None %}
+        <h2>{{ object.title }}</h2>
+    {% else %}
+        <h3> Upgrade Membership </h3>
+    {% endif %}
+    
 </body>
 </html>
