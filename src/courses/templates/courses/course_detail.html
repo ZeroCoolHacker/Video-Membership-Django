@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Video Store</title>
-</head>
-<body>
+{% extends 'courses/base.html' %}
+
+
+{% block content %}
     <h1>{{ object.title }}</h1>
     <p>{{ object.description }}</p>
     <h1>Lessons</h1>
@@ -14,6 +9,4 @@
     {% for lesson in object.lessons %}
         <a href="{{ lesson.get_absolute_url }}">{{lesson.title}}</a>
     {% endfor %}
-        
-</body>
-</html>
+{% endblock content %}
