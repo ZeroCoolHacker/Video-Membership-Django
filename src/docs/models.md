@@ -21,7 +21,7 @@
 - slug
 - title
 - description
-- allowed memberships (Foreign Key to Membership)
+- allowed memberships (ManyToMany to Membership)
 ### Lesson
 - slug
 - title
