@@ -133,8 +133,8 @@ MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 
 if DEBUG:
-    STRIPE_PUBLISHABLE_KEY = 'pk_test_sV4OhR76FLQQqhtzqQAWZ3cd'
-    STRIPE_SECRET_KEY = 'sk_test_3CVmJGwlNAdQ2OA3BWTHg0A7'
+    STRIPE_PUBLISHABLE_KEY = ''
+    STRIPE_SECRET_KEY = ''
 else:
     STRIPE_PUBLISHABLE_KEY = ''
     STRIPE_SECRET_KEY = ''
