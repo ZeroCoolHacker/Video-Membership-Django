@@ -9,3 +9,4 @@ local_settings.py
 .env
 db.sqlite3
 src/videostore/local.py
+media_root/
