@@ -20,6 +20,14 @@
                     {% endfor %}
                         
                 </ul>
+                
+                {% if object.membership_type != 'Free' %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <button>Select</button>
+                </form>
+                {% endif %}
+                
             </div>
     </div>
     {% endfor %}
