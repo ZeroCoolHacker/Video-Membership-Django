@@ -116,3 +116,4 @@ dmypy.json
 .pyre/
 
 static/
+stripe_creds.py

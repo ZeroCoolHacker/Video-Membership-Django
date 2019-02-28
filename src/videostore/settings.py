@@ -123,7 +123,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static_root/'),
+    os.path.join(BASE_DIR, 'static_root'),
 ]
 
 VENV_PATH = os.path.dirname(BASE_DIR)
@@ -132,5 +132,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 
-
+import stripe_creds
+if DEBUG:
+    STRIPE_PUBLISHABLE_KEY = stripe_creds.STRIPE_PUBLISHABLE_KEY
+    STRIPE_SECRET_KEY = stripe_creds.STRIPE_SECRET_KEY
+else:
+    STRIPE_PUBLISHABLE_KEY = ''
+    STRIPE_SECRET_KEY = ''
     
