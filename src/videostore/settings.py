@@ -132,7 +132,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 
-import stripe_creds
+import videostore.stripe_creds as stripe_creds
 if DEBUG:
     STRIPE_PUBLISHABLE_KEY = stripe_creds.STRIPE_PUBLISHABLE_KEY
     STRIPE_SECRET_KEY = stripe_creds.STRIPE_SECRET_KEY
