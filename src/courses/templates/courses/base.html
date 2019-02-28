@@ -5,47 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <title>Video Store</title>
 </head>
 <body>
     {% include 'courses/messages.html' %}
     
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="/">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-                    <a href="/profile">Profile</a>
-            </li>
+    <ol class="breadcrumb">
+        <li>
+            <a href="/">Home</a>
+        </li>
+        <li>
+                <a href="/profile">Profile</a>
+        </li>
+        
+        {% block post_detail_link %}
+        {% endblock post_detail_link %}
             
-            {% block post_detail_link %}
-            {% endblock post_detail_link %}
-                
-            {% if not request.user.is_authenticated %}
-                <li class="breadcrumb-item">
-                    <a href="/register">Register</a>
-                </li>
-                <li class="breadcrumb-item">
-                    <a href="/login">Login</a>
-                </li>
-                {% else %}
-                <li class="float-right">
-                    <a href="/memberships">Memberships</a>
-                </li>
-            {% endif %}
-        </ol>
-    </nav>
+        {% if not request.user.is_authenticated %}
+            <li>
+                <a href="/register">Register</a>
+            </li>
+            <li>
+                <a href="/login">Login</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="/memberships">Memberships</a>
+            </li>
+        {% endif %}
+    </ol>
 
     {% block content %}
         
     {% endblock content %}
         
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>
