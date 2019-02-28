@@ -132,10 +132,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(VENV_PATH, 'media_root')
 
 
-if DEBUG:
-    STRIPE_PUBLISHABLE_KEY = ''
-    STRIPE_SECRET_KEY = ''
-else:
-    STRIPE_PUBLISHABLE_KEY = ''
-    STRIPE_SECRET_KEY = ''
+
     

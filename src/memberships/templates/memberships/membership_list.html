@@ -22,9 +22,15 @@
                 </ul>
                 
                 {% if object.membership_type != 'Free' %}
-                <form action="" method="POST">
+                <form action="." method="POST">
                     {% csrf_token %}
+                    
+                    {% if object.membership_type != current_membership %}
                     <button>Select</button>
+                    {% else %}
+                    <small>This is your current membership</small>
+                    {% endif %}
+                    <input type="hidden" name="membership_type" value="{{ object.membership_type }}">
                 </form>
                 {% endif %}
                 
