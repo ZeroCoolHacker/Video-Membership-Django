@@ -21,7 +21,7 @@
             <a href="/">Home</a>
         </li>
         <li>
-                <a href="/profile">Profile</a>
+                <a href="/profile/">Profile</a>
         </li>
         
         {% block post_detail_link %}
@@ -29,14 +29,14 @@
             
         {% if not request.user.is_authenticated %}
             <li>
-                <a href="/register">Register</a>
+                <a href="/register/">Register</a>
             </li>
             <li>
-                <a href="/login">Login</a>
+                <a href="/login/">Login</a>
             </li>
             {% else %}
             <li>
-                <a href="/memberships">Memberships</a>
+                <a href="/memberships/">Memberships</a>
             </li>
         {% endif %}
     </ol>
