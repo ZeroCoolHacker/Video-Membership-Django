@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.contrib import messages
 from django.http import HttpResponseRedirect
@@ -54,6 +54,7 @@ class MembershipSelectView(ListView):
     """
 
     model = Membership
+    # template_name = 'memberships/membership_list.html'
     
     
     def get_context_data(self, *args, **kwargs):
@@ -111,17 +112,25 @@ def payment_view(request):
     if request.method == 'POST':
         try:
             token = request.POST['stripeToken']
-            stripe.Subscription.create(
+            print(token)
+            subscription = stripe.Subscription.create(
                 customer=user_membership.stripe_customer_id,
                 items=[
                     {
                         "plan": selected_membership.stripe_plan_id,
                     },
                 ],
-                source=token
+                # source=token
             )
-        except stripe.CardError as e:
+
+            return redirect(reverse('memberships:update-transactions',
+            kwargs={
+                'subscription_id': subscription.id,
+            }))
+        except stripe.error.CardError as e:
             messages.info(request, 'Your card has been declined')
+        except:
+            messages.error(request, 'There was a problem')
 
     
     context = {
@@ -130,3 +139,26 @@ def payment_view(request):
     }
 
     return render(request, 'memberships/membership_payment.html', context)
+
+
+
+def update_transactions(request, subscription_id):
+    
+    user_membership = get_user_membership(request)
+    selected_membership = get_selected_membership(request)
+
+    user_membership.membership = selected_membership
+    user_membership.save()
+
+    sub, created = Subscription.objects.get_or_create(user_membership=user_membership)
+    sub.stripe_subscription_id = subscription_id
+    sub.active = True
+    sub.save()
+
+    try:
+        del request.session['selected_membership_type']
+    except:
+        pass
+
+    messages.info(request, "Successfully created {} membership".format(selected_membership))
+    return redirect('/courses/')
